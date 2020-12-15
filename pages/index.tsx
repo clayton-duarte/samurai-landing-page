@@ -1,5 +1,23 @@
-import { Animated, Basic, bounce, Combined } from "../shared/styles";
+import React from "react";
+import { NextPage } from "next";
 
-const Home = () => <div>oi</div>;
+import Header from "../components/Header";
+
+const Home: NextPage = () => {
+  return (
+    <>
+      <Header />
+      <section>banner</section>
+      <section>sobre</section>
+      <section>parceiros</section>
+      <section>testemunhos</section>
+      <section>contato</section>
+      <footer>
+        <div>social</div>
+        <div>copywright</div>
+      </footer>
+    </>
+  );
+};
 
 export default Home;
