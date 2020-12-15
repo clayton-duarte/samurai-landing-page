@@ -2,11 +2,7 @@ import React, { FunctionComponent } from "react";
 
 const Logo: FunctionComponent = ({ ...props }) => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 283.94 69.42"
-      {...props}
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" {...props}>
       <path
         d="M0,9.3a27.31,27.31,0,0,1,4.44.16A3.59,3.59,0,0,1,6.3,11c5.92,8.62,14.34,10.7,24.25,9.37a34.29,34.29,0,0,1,8.47,0c11,1.3,20.69-.44,27.35-10.33.62-.93,2-1.35,3.91-2.53a39.54,39.54,0,0,1,0,4.43c-.07.61-.7,1.13-.87,1.75-3.28,12-10.91,16-23.47,14.54C35.23,27,24.29,27.9,13.48,28a5.59,5.59,0,0,1-5.79-3.51C5.28,19.71,2.58,15,0,10.29Z"
         fill="red"
@@ -36,19 +32,6 @@ const Logo: FunctionComponent = ({ ...props }) => {
         fill="red"
       />
       <path d="M15,12.62,26.84,3.17V16.06l-11.2-.91Z" fill="red" />
-      <path d="M83.13,26.82c4.22,4.31,3.94,12,0,14.75Z" fill="#fff" />
-      <path d="M135.13,32.26v10h-1.5V32.41Z" fill="#fff" />
-      <text
-        fill="#fff"
-        transform="translate(76.77 48.52)"
-        style={{
-          fontSize: "33px",
-          fontFamily: "HelveticaNeue-CondensedBlack, Helvetica Neue",
-          fontWeight: 800,
-        }}
-      >
-        Dilson Samurai
-      </text>
     </svg>
   );
 };

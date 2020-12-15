@@ -1,13 +1,12 @@
 import React from "react";
 import { NextPage } from "next";
 
-import Header from "../components/Header";
+import Banner from "../components/Banner";
 
 const Home: NextPage = () => {
   return (
     <>
-      <Header />
-      <section>banner</section>
+      <Banner />
       <section>sobre</section>
       <section>parceiros</section>
       <section>testemunhos</section>
