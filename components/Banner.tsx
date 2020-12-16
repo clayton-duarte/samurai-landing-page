@@ -4,13 +4,13 @@ import styled from "@emotion/styled";
 import Header from "./Header";
 
 const StyledBanner = styled.section`
+  color: ${(props) => props.theme.white};
   background: url("./samurai-bg.jpg");
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: cover;
   align-items: center;
   position: relative;
-  color: #fff;
   height: 100vh;
   display: grid;
   &::before {
@@ -23,10 +23,10 @@ const StyledBanner = styled.section`
     top: 0;
   }
   &::after {
+    border-bottom: 5vw solid ${(props) => props.theme.white};
+    border-right: 50vw solid ${(props) => props.theme.white};
+    border-left: 50vw solid ${(props) => props.theme.white};
     border-top: 15vw solid transparent;
-    border-bottom: 5vw solid #fff;
-    border-right: 50vw solid #fff;
-    border-left: 50vw solid #fff;
     position: absolute;
     content: "";
     bottom: 0;
@@ -57,14 +57,14 @@ const SubTitle = styled.h2`
 `;
 
 const Button = styled.button`
+  background: ${(props) => props.theme.blue};
   text-transform: uppercase;
-  background: #1362cc;
   padding: 0.5rem 2rem;
   border-radius: 1rem;
   font-size: 1.1rem;
   font-weight: bold;
   border: none;
-  color: #fff;
+  color: ${(props) => props.theme.white};
 `;
 
 const ButtonWrapper = styled.div`
