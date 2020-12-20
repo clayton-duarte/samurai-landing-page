@@ -10,10 +10,13 @@ const StyledLogo = styled(Logo)<{ onTop: boolean }>`
 `;
 
 const StyledTitle = styled.h1<{ onTop: boolean }>`
-  font-size: ${(props) => (props.onTop ? "1.25rem" : "0")};
+  transform: scale(${(props) => (props.onTop ? 1 : 0.5)});
+  opacity: ${(props) => (props.onTop ? 1 : 0)};
   color: ${(props) => props.theme.white};
+  transform-origin: left;
   transition: 0.25s ease;
   letter-spacing: 2px;
+  font-size: 1.25rem;
 `;
 
 const StyledHeader = styled.header<{ onTop: boolean }>`

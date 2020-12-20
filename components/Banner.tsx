@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 
-import Header from "./Header";
+import H1 from "./H1";
 
 const StyledBanner = styled.section`
   color: ${(props) => props.theme.white};
@@ -43,13 +43,6 @@ const Wrapper = styled.div`
   gap: 2.5rem;
 `;
 
-const Title = styled.h1`
-  text-transform: capitalize;
-  font-weight: normal;
-  font-size: 2.5rem;
-  margin: 0;
-`;
-
 const SubTitle = styled.h2`
   font-weight: normal;
   font-size: 1.5rem;
@@ -74,9 +67,8 @@ const ButtonWrapper = styled.div`
 const Banner: FunctionComponent = () => {
   return (
     <StyledBanner>
-      <Header />
       <Wrapper>
-        <Title>karatê Budo</Title>
+        <H1>karatê Budo</H1>
         <SubTitle>
           O Zen em movimento <br />
           Mentalidade samurai
