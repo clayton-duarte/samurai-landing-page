@@ -1,6 +1,7 @@
 import React from "react";
 import { NextPage } from "next";
 
+import Testimonials from "../components/Testimonials";
 import Partners from "../components/Partners";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
@@ -13,7 +14,7 @@ const Home: NextPage = () => {
       <Banner />
       <Partners />
       <About />
-      <section>testemunhos</section>
+      <Testimonials />
       <section>contato</section>
       <footer>
         <div>social</div>

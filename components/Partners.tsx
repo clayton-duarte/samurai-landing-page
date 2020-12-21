@@ -14,7 +14,7 @@ const Image = styled.img`
   filter: grayscale(100%) contrast(80%);
 `;
 
-const About = () => {
+const Partners = () => {
   return (
     <Wrapper>
       <Image src="./parceiros-2.webp" />
@@ -24,4 +24,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Partners;
