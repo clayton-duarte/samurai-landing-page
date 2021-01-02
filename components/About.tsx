@@ -11,10 +11,10 @@ const StyledSection = styled.section`
 `;
 
 const Picture = styled.div`
+  box-shadow: ${(props) => props.theme.shadow};
   background: url("./sobre-mim.webp");
   background-position: right center;
   border-radius: calc(50vw - 2rem);
-  box-shadow: 0 0 0.5rem #0005;
   background-repeat: no-repeat;
   height: calc(100vw - 4rem);
   width: calc(100vw - 4rem);

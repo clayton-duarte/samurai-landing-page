@@ -3,7 +3,9 @@ import { NextPage } from "next";
 
 import Testimonials from "../components/Testimonials";
 import Partners from "../components/Partners";
+import Pricing from "../components/Pricing";
 import Banner from "../components/Banner";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import About from "../components/About";
 
@@ -15,11 +17,9 @@ const Home: NextPage = () => {
       <Partners />
       <About />
       <Testimonials />
+      <Pricing />
       <section>contato</section>
-      <footer>
-        <div>social</div>
-        <div>copywright</div>
-      </footer>
+      <Footer />
     </>
   );
 };

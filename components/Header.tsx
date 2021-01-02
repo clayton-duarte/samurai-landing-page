@@ -5,6 +5,7 @@ import Menu from "./Menu";
 import Logo from "./Logo";
 
 const StyledLogo = styled(Logo)<{ onTop: boolean }>`
+  fill: ${(props) => (props.onTop ? props.theme.red : props.theme.white)};
   height: ${(props) => (props.onTop ? "2.5rem" : "2rem")};
   transition: 0.25s ease;
 `;
@@ -20,8 +21,8 @@ const StyledTitle = styled.h1<{ onTop: boolean }>`
 `;
 
 const StyledHeader = styled.header<{ onTop: boolean }>`
+  box-shadow: ${(props) => (props.onTop ? "0 0 0 #0000" : props.theme.shadow)};
   background: ${(props) => (props.onTop ? "transparent" : props.theme.grey)};
-  box-shadow: ${(props) => (props.onTop ? "0 0 0 #0000" : "0 0 1rem #0005")};
   grid-template-columns: auto 1fr auto;
   justify-content: space-between;
   transition: 0.25s ease;

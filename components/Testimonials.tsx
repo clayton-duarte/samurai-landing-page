@@ -11,18 +11,15 @@ const StyledSection = styled.section`
 `;
 
 const Ballon = styled.div<{ index: number }>`
-  background: ${(props) =>
-    props.index % 2 === 0 ? props.theme.blue : props.theme.red};
+  background: ${(props) => props.theme.red};
   color: ${(props) => props.theme.white};
-  box-shadow: 0 0 1rem #0005;
   border-radius: 1rem;
   position: relative;
   padding: 1.5rem;
   &::after {
-    border-top: 1rem solid
-      ${(props) => (props.index % 2 === 0 ? props.theme.blue : props.theme.red)};
+    border-top: 1rem solid ${(props) => props.theme.red};
     border-left: 1rem solid
-      ${(props) => (props.index % 2 === 0 ? props.theme.blue : "transparent")};
+      ${(props) => (props.index % 2 === 0 ? props.theme.red : "transparent")};
     border-right: 1rem solid
       ${(props) => (props.index % 2 === 0 ? "transparent" : props.theme.red)};
     right: ${(props) => (props.index % 2 === 0 ? "auto" : "4rem")};
@@ -36,6 +33,7 @@ const Ballon = styled.div<{ index: number }>`
 
 const Thumbnail = styled.div`
   background: url("http://placekitten.com/300/300");
+  box-shadow: ${(props) => props.theme.shadow};
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
