@@ -30,8 +30,10 @@ const handler: NextApiHandler = (req, res) => {
   const mailOptions = {
     subject: "Karate",
     from: fromUser,
-    to: fromUser,
+    bcc: fromUser,
+    to: email,
     html: `
+      <h3>Mensagem recebida!</he>
       <p>Nome: ${name}</p>
       <p>Email: ${email}</p>
       <p>Mensagem: ${message}</p>
