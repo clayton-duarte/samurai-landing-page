@@ -81,6 +81,11 @@ const Menu: FunctionComponent<{ onTop: boolean }> = ({ onTop }) => {
   const handleClickMenuItem = (anchorId: string) => (e: MouseEvent): void => {
     e.preventDefault();
     setOpen(false);
+    document.getElementById(anchorId).scrollIntoView({
+      behavior: "smooth",
+      inline: "nearest",
+      block: "start",
+    });
   };
 
   return (
@@ -89,19 +94,27 @@ const Menu: FunctionComponent<{ onTop: boolean }> = ({ onTop }) => {
         <StyledMenuIcon open={open} onTop={onTop} />
       </MenuIcon>
       <MenuOverlay open={open}>
-        <MenuItem role="button" href="#" onClick={handleClickMenuItem("#")}>
+        <MenuItem
+          onClick={handleClickMenuItem("__next")}
+          role="button"
+          href="#"
+        >
           inicio
         </MenuItem>
-        <MenuItem role="button" href="#" onClick={handleClickMenuItem("#")}>
+        <MenuItem role="button" href="#" onClick={handleClickMenuItem("about")}>
           sobre
         </MenuItem>
-        <MenuItem role="button" href="#" onClick={handleClickMenuItem("#")}>
+        <MenuItem role="button" href="#" onClick={handleClickMenuItem("about")}>
           historia
         </MenuItem>
-        <MenuItem role="button" href="#" onClick={handleClickMenuItem("#")}>
+        <MenuItem role="button" href="#" onClick={handleClickMenuItem("about")}>
           novidades
         </MenuItem>
-        <MenuItem role="button" href="#" onClick={handleClickMenuItem("#")}>
+        <MenuItem
+          onClick={handleClickMenuItem("contact")}
+          role="button"
+          href="#"
+        >
           contato
         </MenuItem>
       </MenuOverlay>

@@ -36,9 +36,13 @@ const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
             outline: none;
           }
           p,
-          span {
+          span,
+          input,
+          textarea {
             font-family: "Roboto", sans-serif;
             line-height: 1.2;
+            font-size: 1rem;
+            color: inherit;
             margin: 0;
           }
           h1,
@@ -47,6 +51,7 @@ const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
             font-family: "Roboto Mono", monospace;
             font-weight: bold;
             line-height: 1.5;
+            color: inherit;
             margin: 0;
           }
           h2,
@@ -55,6 +60,7 @@ const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
             font-family: "Roboto", sans-serif;
             font-weight: bold;
             line-height: 1.5;
+            color: inherit;
             margin: 0;
           }
         `}

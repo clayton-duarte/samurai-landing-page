@@ -1,14 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
 
+import Section from "./Section";
 import H3 from "./H3";
 import P from "./P";
-
-const StyledSection = styled.section`
-  padding: 1.5rem;
-  display: grid;
-  gap: 1.5rem;
-`;
 
 const Picture = styled.div`
   box-shadow: ${(props) => props.theme.shadow};
@@ -32,7 +27,7 @@ const Blockquote = styled.blockquote`
 
 const About = () => {
   return (
-    <StyledSection>
+    <Section id="about">
       <H3>Sobre Mim</H3>
       <Picture />
       <P>
@@ -64,7 +59,7 @@ const About = () => {
         do Dojo e se tornam presentes no meio familiar, no trabalho e
         principalmente na sociedade como um todo.
       </P>
-    </StyledSection>
+    </Section>
   );
 };
 

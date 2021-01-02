@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 
+import Button from "./Button";
 import H1 from "./H1";
 
 const StyledBanner = styled.section`
@@ -49,34 +50,25 @@ const SubTitle = styled.h2`
   margin: 0;
 `;
 
-const Button = styled.button`
-  background: ${(props) => props.theme.blue};
-  text-transform: uppercase;
-  padding: 0.5rem 2rem;
-  border-radius: 1rem;
-  font-size: 1.1rem;
-  font-weight: bold;
-  border: none;
-  color: ${(props) => props.theme.white};
-`;
-
-const ButtonWrapper = styled.div`
-  margin: 2rem 0;
-`;
-
 const Banner: FunctionComponent = () => {
+  const handleClick = () => {
+    document.getElementById("contact").scrollIntoView({
+      behavior: "smooth",
+      inline: "nearest",
+      block: "start",
+    });
+  };
+
   return (
     <StyledBanner>
-      <Wrapper>
+      <Wrapper id="home">
         <H1>karatê Budo</H1>
         <SubTitle>
           O Zen em movimento <br />
           Mentalidade samurai
         </SubTitle>
         <SubTitle>Aulas de Karatê e Defesa Pessoal</SubTitle>
-        <ButtonWrapper>
-          <Button>agende já</Button>
-        </ButtonWrapper>
+        <Button onClick={handleClick}>agende já</Button>
       </Wrapper>
     </StyledBanner>
   );

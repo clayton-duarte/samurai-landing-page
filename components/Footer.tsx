@@ -13,21 +13,21 @@ const Copyright = styled.span`
   font-size: 0.75rem;
 `;
 
-const Fab = styled.aside`
+const Fab = styled.a`
+  margin: 1rem;
   box-shadow: ${(props) => props.theme.shadow};
   background: ${(props) => props.theme.green};
   color: ${(props) => props.theme.white};
   justify-content: center;
   border-radius: 3rem;
   align-items: center;
-  font-size: 2rem;
-  position: sticky;
-  height: 3rem;
-  display: grid;
-  width: 3rem;
-  margin: 1rem;
-  bottom: 1rem;
   margin-left: auto;
+  position: sticky;
+  font-size: 2rem;
+  display: grid;
+  bottom: 1rem;
+  height: 3rem;
+  width: 3rem;
 `;
 
 const StyledFooter = styled.footer`
@@ -48,13 +48,18 @@ const StyledFooter = styled.footer`
 const Footer: FunctionComponent = () => {
   return (
     <>
-      <Fab>
+      <Fab
+        target="_blank"
+        href={`https://wa.me/5521999003412?text=${encodeURI(
+          "Olá mestre Dilson, gostaria de saber mais informações sobre as suas aulas."
+        )}`}
+      >
         <FaWhatsapp />
       </Fab>
       <StyledFooter>
         <Copyright>Dilson Samurai © {new Date().getFullYear()}</Copyright>
-        <FaFacebookSquare />
         <FaYoutubeSquare />
+        <FaFacebookSquare />
         <FaInstagramSquare />
         <FaLinkedin />
       </StyledFooter>
