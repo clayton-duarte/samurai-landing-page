@@ -2,6 +2,7 @@ import React, { FunctionComponent, useEffect, useState } from "react";
 import styled from "@emotion/styled";
 
 import Menu from "./Menu";
+import Section from "./Section";
 import Logo from "./Logo";
 
 const StyledLogo = styled(Logo)<{ onTop: boolean }>`
@@ -23,18 +24,21 @@ const StyledTitle = styled.h1<{ onTop: boolean }>`
 const StyledHeader = styled.header<{ onTop: boolean }>`
   box-shadow: ${(props) => (props.onTop ? "0 0 0 #0000" : props.theme.shadow)};
   background: ${(props) => (props.onTop ? "transparent" : props.theme.grey)};
-  grid-template-columns: auto 1fr auto;
-  justify-content: space-between;
   transition: 0.25s ease;
-  align-items: center;
   position: fixed;
   display: grid;
-  padding: 1rem;
   z-index: 999;
   gap: 0.5rem;
   right: 0;
   left: 0;
   top: 0;
+`;
+
+const StyledContainer = styled(Section)`
+  grid-template-columns: auto 1fr auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
 `;
 
 const Header: FunctionComponent = () => {
@@ -51,9 +55,11 @@ const Header: FunctionComponent = () => {
 
   return (
     <StyledHeader onTop={isOnTop}>
-      <StyledLogo onTop={isOnTop} />
-      <StyledTitle onTop={isOnTop}>DilsonSamurai</StyledTitle>
-      <Menu onTop={isOnTop} />
+      <StyledContainer>
+        <StyledLogo onTop={isOnTop} />
+        <StyledTitle onTop={isOnTop}>DilsonSamurai</StyledTitle>
+        <Menu onTop={isOnTop} />
+      </StyledContainer>
     </StyledHeader>
   );
 };

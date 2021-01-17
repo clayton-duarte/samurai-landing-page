@@ -2,6 +2,8 @@ import React, { FunctionComponent, MouseEvent, useState } from "react";
 import { css, Global } from "@emotion/react";
 import styled from "@emotion/styled";
 
+import MenuItems from "./MenuItems";
+
 const StyledMenuIcon = styled.div<{ open: boolean; onTop: boolean }>`
   transform: rotate(${(props) => (props.open ? "45deg" : "0deg")});
   width: ${(props) => (props.onTop ? "2rem" : "1.75rem")};
@@ -30,6 +32,9 @@ const StyledMenuIcon = styled.div<{ open: boolean; onTop: boolean }>`
     content: "";
     height: 2px;
   }
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
 const MenuIcon = styled.a<{ onTop: boolean }>`
@@ -40,6 +45,9 @@ const MenuIcon = styled.a<{ onTop: boolean }>`
   z-index: 9999;
   display: grid;
   height: 2rem;
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
 const MenuOverlay = styled.nav<{ open: boolean }>`
@@ -49,6 +57,7 @@ const MenuOverlay = styled.nav<{ open: boolean }>`
   transition: 0.3s ease;
   align-content: center;
   letter-spacing: 3px;
+  font-size: 1.2rem;
   position: fixed;
   display: grid;
   height: 100vh;
@@ -57,16 +66,20 @@ const MenuOverlay = styled.nav<{ open: boolean }>`
   gap: 2rem;
   right: 0;
   left: 0;
-`;
-
-const MenuItem = styled.a`
-  color: ${(props) => props.theme.white};
-  text-transform: uppercase;
-  transition: 0.25s ease;
-  text-decoration: none;
-  font-size: 1.2rem;
-  &:hover {
-    text-decoration: underline;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(5, auto);
+    background: transparent;
+    justify-items: end;
+    position: relative;
+    font-size: 0.75rem;
+    height: auto;
+    bottom: auto;
+    width: auto;
+    right: auto;
+    left: auto;
+  }
+  @media (min-width: 1024px) {
+    font-size: 1rem;
   }
 `;
 
@@ -78,45 +91,13 @@ const Menu: FunctionComponent<{ onTop: boolean }> = ({ onTop }) => {
     setOpen(!open);
   };
 
-  const handleClickMenuItem = (anchorId: string) => (e: MouseEvent): void => {
-    e.preventDefault();
-    setOpen(false);
-    document.getElementById(anchorId).scrollIntoView({
-      behavior: "smooth",
-      inline: "nearest",
-      block: "start",
-    });
-  };
-
   return (
     <>
       <MenuIcon role="button" href="#" onClick={handleClickMenu} onTop={onTop}>
         <StyledMenuIcon open={open} onTop={onTop} />
       </MenuIcon>
-      <MenuOverlay open={open}>
-        <MenuItem
-          onClick={handleClickMenuItem("__next")}
-          role="button"
-          href="#"
-        >
-          inicio
-        </MenuItem>
-        <MenuItem role="button" href="#" onClick={handleClickMenuItem("about")}>
-          sobre
-        </MenuItem>
-        <MenuItem role="button" href="#" onClick={handleClickMenuItem("about")}>
-          historia
-        </MenuItem>
-        <MenuItem role="button" href="#" onClick={handleClickMenuItem("about")}>
-          novidades
-        </MenuItem>
-        <MenuItem
-          onClick={handleClickMenuItem("contact")}
-          role="button"
-          href="#"
-        >
-          contato
-        </MenuItem>
+      <MenuOverlay open={open} onTop={onTop}>
+        <MenuItems setOpen={setOpen} />
       </MenuOverlay>
       {open && (
         <Global

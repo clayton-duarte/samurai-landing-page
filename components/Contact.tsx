@@ -9,17 +9,22 @@ import {
 
 import Section from "./Section";
 import Button from "./Button";
+import Row from "./Row";
 import H3 from "./H3";
 import H4 from "./H4";
 
-const Row = styled.div`
-  grid-template-columns: repeat(3, auto);
-  justify-content: center;
-  align-items: center;
+const SocialLinks = styled(Row)`
   font-size: 2.5rem;
-  padding: 1.5rem;
-  display: grid;
-  gap: 1.5rem;
+  @media (min-width: 1024px) {
+    font-size: 3.5rem;
+  }
+`;
+
+const ResponsiveRow = styled(Row)`
+  padding-top: 2rem;
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const Whatsapp = styled(FaWhatsappSquare)`
@@ -37,6 +42,7 @@ const Facebook = styled(FaFacebookSquare)`
 const Form = styled.form`
   box-shadow: ${(props) => props.theme.shadow};
   border-radius: 1rem;
+  text-align: center;
   padding: 2rem;
   display: grid;
   gap: 2rem;
@@ -106,55 +112,56 @@ const Contact = () => {
     <Section id="contact">
       <H3>Contato</H3>
       <H4>Entre em contato conosco e agende a sua primeira aula!</H4>
-      <Row>
-        <a
-          target="_blank"
-          href={`https://wa.me/5521999003412?text=${encodeURI(
-            "Olá mestre Dilson, gostaria de saber mais informações sobre as suas aulas."
-          )}`}
-        >
-          <Whatsapp />
-        </a>
-        <a target="_blank" href="http://youtube.com">
-          <Youtube />
-        </a>
-        <a target="_blank" href="http://facebook.com">
-          <Facebook />
-        </a>
-      </Row>
-      <Form onSubmit={handleSubmit}>
-        <FormTitle>Utilize esse formulario para nos enviar um email</FormTitle>
-        <Input
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Nome (Obrigatorio)"
-          name="name"
-        />
-        <Input
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Email (Obrigatorio)"
-          type="email"
-          name="email"
-        />
-        <TextArea
-          value={formData.message}
-          onChange={handleChange}
-          placeholder="Mensagem (Obrigatorio)"
-          name="message"
-          rows={6}
-        />
-        <Button
-          disabled={
-            !Object.values(formData).reduce(
-              (prev, next) => Boolean(prev) && Boolean(next),
-              true
-            )
-          }
-        >
-          Enviar
-        </Button>
-      </Form>
+      <ResponsiveRow>
+        <SocialLinks template="repeat(3, auto)" justify="center">
+          <a target="_blank" href="https://cutt.ly/GjU3xgp">
+            <Whatsapp />
+          </a>
+          <a target="_blank" href="https://cutt.ly/0jzNwFh">
+            <Youtube />
+          </a>
+          <a target="_blank" href="https://cutt.ly/QjU3pEt">
+            <Facebook />
+          </a>
+        </SocialLinks>
+        <Form onSubmit={handleSubmit}>
+          <FormTitle>
+            Utilize esse formulario para nos enviar um email
+          </FormTitle>
+          <Input
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Nome (Obrigatorio)"
+            name="name"
+          />
+          <Input
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Email (Obrigatorio)"
+            type="email"
+            name="email"
+          />
+          <TextArea
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Mensagem (Obrigatorio)"
+            name="message"
+            rows={6}
+          />
+          <Row justify="start">
+            <Button
+              disabled={
+                !Object.values(formData).reduce(
+                  (prev, next) => Boolean(prev) && Boolean(next),
+                  true
+                )
+              }
+            >
+              Enviar
+            </Button>
+          </Row>
+        </Form>
+      </ResponsiveRow>
     </Section>
   );
 };

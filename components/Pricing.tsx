@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 
+import Section from "./Section";
+import Row from "./Row";
 import H5 from "./H5";
 import H3 from "./H3";
 import H4 from "./H4";
@@ -9,10 +11,18 @@ import P from "./P";
 const StyledSection = styled.section`
   background: ${(props) => props.theme.grey};
   color: ${(props) => props.theme.white};
-  text-align: center;
-  padding: 1.5rem;
+  padding-bottom: 3rem;
   display: grid;
   gap: 2rem;
+`;
+
+const ResponsiveRow = styled(Row)`
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 const Card = styled.div`
@@ -20,6 +30,7 @@ const Card = styled.div`
   background: ${(props) => props.theme.white};
   color: ${(props) => props.theme.black};
   border-radius: 1rem;
+  text-align: center;
   padding: 2rem;
   display: grid;
   gap: 1rem;
@@ -74,38 +85,43 @@ const About = () => {
   };
 
   return (
-    <StyledSection>
-      <H3>Aulas&Treinos</H3>
-      <H4>
-        Dilson dos Santos, nascido no Rio de Janeiro, é mestre sétimo dan em
-        Karatê Budo e instrutor de Defesa Pessoal.
-      </H4>
-      <Card>
-        <H5>Grupos</H5>
-        <P>
-          Frente a clientes heterogêneos, o aprendizado é direcionado buscando a
-          forma mais completa e profissional para atender diferentes tipos de
-          alunos com suas particularides.
-        </P>
-        {renderPrice(20)}
-        <P>R$15 por meia hora</P>
-      </Card>
-      <Card>
-        <H5>Aulas Particulares</H5>
-        <P>
-          Construídas com bases solídas, fundamentadas através de vivências em
-          Acabemias, Clubes, entre outros. Com diversas modalidades em Artes
-          Marciais e Defesa Pessoal.
-        </P>
-        {renderPrice(50)}
-        <P>R$30 por meia hora</P>
-      </Card>
-      <Card>
-        <H5>treinos aos Finais de semana</H5>
-        <P>
-          Entre em contato pelo nosso Whatsapp para valores e mais informacoes
-        </P>
-      </Card>
+    <StyledSection id="aulas">
+      <Section>
+        <H3>Aulas&Treinos</H3>
+        <H4>
+          Shihan Dílson dos Santos é faixa preta 7º Dan pela Shotokan Karate
+          International Federation Japão, SKIF e intrutor de Artes Marciais.
+        </H4>
+        <ResponsiveRow align="start">
+          <Card>
+            <H5>Grupos</H5>
+            <P>
+              Frente a clientes heterogêneos, o aprendizado é direcionado
+              buscando a forma mais completa e profissional para atender
+              diferentes tipos de alunos com suas particularides.
+            </P>
+            {renderPrice(20)}
+            <P>R$15 por meia hora</P>
+          </Card>
+          <Card>
+            <H5>Aulas Particulares</H5>
+            <P>
+              Construídas com bases sólidas, fundamentadas através de vivências
+              em academias, clubes, entre outros. Com diversas modalidades em
+              Artes Marciais e Defesa Pessoal.
+            </P>
+            {renderPrice(50)}
+            <P>R$30 por meia hora</P>
+          </Card>
+          <Card>
+            <H5>Finais de semana</H5>
+            <P>
+              Entre em contato pelo nosso Whatsapp para valores e mais
+              informações
+            </P>
+          </Card>
+        </ResponsiveRow>
+      </Section>
     </StyledSection>
   );
 };

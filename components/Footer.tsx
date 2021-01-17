@@ -10,7 +10,7 @@ import {
 
 const Copyright = styled.span`
   letter-spacing: 2px;
-  font-size: 0.75rem;
+  font-size: 0.75em;
 `;
 
 const Fab = styled.a`
@@ -23,7 +23,7 @@ const Fab = styled.a`
   align-items: center;
   margin-left: auto;
   position: sticky;
-  font-size: 2rem;
+  /* font-size: 2rem; */
   display: grid;
   bottom: 1rem;
   height: 3rem;
@@ -36,13 +36,21 @@ const StyledFooter = styled.footer`
   color: ${(props) => props.theme.white};
   grid-template-columns: repeat(5, auto);
   justify-content: center;
+  align-items: center;
   padding: 0.5rem 1rem;
   align-items: center;
+  font-size: 0.75rem;
   display: grid;
   z-index: 999;
   gap: 1ch;
   right: 0;
   left: 0;
+  @media (min-width: 1024px) {
+    font-size: 1.5rem;
+  }
+  > a {
+    color: ${(props) => props.theme.white};
+  }
 `;
 
 const Footer: FunctionComponent = () => {
@@ -54,14 +62,22 @@ const Footer: FunctionComponent = () => {
           "Olá mestre Dilson, gostaria de saber mais informações sobre as suas aulas."
         )}`}
       >
-        <FaWhatsapp />
+        <FaWhatsapp fontSize="2rem" />
       </Fab>
       <StyledFooter>
         <Copyright>Dilson Samurai © {new Date().getFullYear()}</Copyright>
-        <FaYoutubeSquare />
-        <FaFacebookSquare />
-        <FaInstagramSquare />
-        <FaLinkedin />
+        <a target="_blank" href="https://cutt.ly/0jzNwFh">
+          <FaYoutubeSquare />
+        </a>
+        <a target="_blank" href="https://cutt.ly/QjU3pEt">
+          <FaFacebookSquare />
+        </a>
+        <a target="_blank" href="https://cutt.ly/GjU3WXQ">
+          <FaInstagramSquare />
+        </a>
+        <a target="_blank" href="https://cutt.ly/1jU3PDU">
+          <FaLinkedin />
+        </a>
       </StyledFooter>
     </>
   );

@@ -4,12 +4,12 @@ import { AppProps } from "next/app";
 
 const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
   const theme: Theme = {
-    black: "#303841",
+    black: "#1F1F1F",
     grey: "#7f7f7f",
-    white: "#EEEEEE",
-    green: "#00BFA5",
-    blue: "#1364CD",
-    red: "#E03E3E",
+    white: "#f5f5f5",
+    green: "#16c79a",
+    blue: "#11698e",
+    red: "#e84545",
     shadow: "0 0 1rem #0003",
   };
 

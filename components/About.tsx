@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
 
+import Partners from "./Partners";
 import Section from "./Section";
+import Row from "./Row";
 import H3 from "./H3";
 import P from "./P";
 
@@ -15,6 +17,11 @@ const Picture = styled.div`
   width: calc(100vw - 4rem);
   background-size: cover;
   margin: 1rem auto;
+  @media (min-width: 768px) {
+    border-radius: calc(200px - 2rem);
+    height: calc(400px - 4rem);
+    width: calc(400px - 4rem);
+  }
 `;
 
 const Blockquote = styled.blockquote`
@@ -25,40 +32,58 @@ const Blockquote = styled.blockquote`
   margin: 1rem;
 `;
 
+const ResponsiveRow = styled(Row)`
+  @media (min-width: 768px) {
+    grid-template-columns: auto 1fr;
+    gap: 3rem;
+  }
+  @media (min-width: 1024px) {
+    gap: 5rem;
+  }
+`;
+
 const About = () => {
   return (
     <Section id="about">
       <H3>Sobre Mim</H3>
-      <Picture />
-      <P>
-        Dilson dos Santos, nascido no Rio de Janeiro, é mestre sétimo dan em
-        Karatê Budo e instrutor de Defesa Pessoal. Começou a treinar bem cedo
-        aos 9 anos com os grandes mestres Furusho, Watanabe, Uriu, Tanaka, Délio
-        e Paulo Goes (Shotokan). E desde então, compartilha a filosofia do
-        Karatê Budo.
-      </P>
-      <P>
-        Budo é um termo japonês que significa "caminho marcial" e se refere às
-        disciplinas marciais que tem como principal objetivo o espírito, a ética
-        e/ou o desenvolvimento pessoal.
-      </P>
-      <Blockquote>
-        "O Karatê que descarta o Budo não tem substância."
-      </Blockquote>
-      <P>
-        Como mestre que pratica o Budo desde os 9 anos, ele enfatiza que esse é
-        o melhor dos dois mundos. Pois, pratica e dá aulas baseadas na filosofia
-        do Budo, trazendo para si e para seus alunos hábitos de disciplina,
-        desenvolvimento da autoconfiança, autoconhecimento, entendimento do
-        trabalhar em equipe, corpo saudável e mudança de mindset.
-      </P>
-      <P>
-        Além disso, como atleta, mestre Dilson incentiva a prática esportiva,
-        trazendo também uma competitividade saudável. As boas práticas
-        aprendidas juntamente com o conhecimento técnico são levados para fora
-        do Dojo e se tornam presentes no meio familiar, no trabalho e
-        principalmente na sociedade como um todo.
-      </P>
+      <ResponsiveRow align="start" padding="2rem 0 0 0">
+        <Row>
+          <Picture />
+          <Partners desktopOnly />
+        </Row>
+        <Row>
+          <P>
+            Dilson dos Santos, nascido no Rio de Janeiro, é mestre sétimo dan em
+            Karatê Budo e instrutor de Defesa Pessoal. Começou a treinar bem
+            cedo aos 9 anos com os grandes mestres Furusho, Watanabe, Uriu,
+            Tanaka, Délio e Paulo Goes (Shotokan). E desde então, compartilha a
+            filosofia do Karatê Budo.
+          </P>
+          <P>
+            Budo é um termo japonês que significa "caminho marcial" e se refere
+            às disciplinas marciais que tem como principal objetivo o espírito,
+            a ética e/ou o desenvolvimento pessoal.
+          </P>
+          <Blockquote>
+            "O Karatê que descarta o Budo não tem substância."
+          </Blockquote>
+          <P>
+            Como mestre que pratica o Budo desde os 9 anos, ele enfatiza que
+            esse é o melhor dos dois mundos. Pois, pratica e dá aulas baseadas
+            na filosofia do Budo, trazendo para si e para seus alunos hábitos de
+            disciplina, desenvolvimento da autoconfiança, autoconhecimento,
+            entendimento do trabalhar em equipe, corpo saudável e mudança de
+            mindset.
+          </P>
+          <P>
+            Além disso, como atleta, mestre Dilson incentiva a prática
+            esportiva, trazendo também uma competitividade saudável. As boas
+            práticas aprendidas juntamente com o conhecimento técnico são
+            levados para fora do Dojo e se tornam presentes no meio familiar, no
+            trabalho e principalmente na sociedade como um todo.
+          </P>
+        </Row>
+      </ResponsiveRow>
     </Section>
   );
 };

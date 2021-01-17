@@ -32,6 +32,14 @@ const StyledBanner = styled.section`
     content: "";
     bottom: 0;
     right: 0;
+    @media (min-width: 768px) {
+      border-bottom: 2vw solid ${(props) => props.theme.white};
+      border-top: 10vw solid transparent;
+    }
+    @media (min-width: 1024px) {
+      border-bottom: 2vw solid ${(props) => props.theme.white};
+      border-top: 5vw solid transparent;
+    }
   }
 `;
 
@@ -39,6 +47,7 @@ const Wrapper = styled.div`
   justify-items: center;
   text-align: center;
   position: relative;
+  line-height: 1.2;
   display: grid;
   padding: 1rem;
   gap: 2.5rem;
@@ -48,6 +57,9 @@ const SubTitle = styled.h2`
   font-weight: normal;
   font-size: 1.5rem;
   margin: 0;
+  @media (min-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 const Banner: FunctionComponent = () => {
@@ -68,7 +80,9 @@ const Banner: FunctionComponent = () => {
           Mentalidade samurai
         </SubTitle>
         <SubTitle>Aulas de Karatê e Defesa Pessoal</SubTitle>
-        <Button onClick={handleClick}>agende já</Button>
+        <Button big onClick={handleClick}>
+          agende já
+        </Button>
       </Wrapper>
     </StyledBanner>
   );

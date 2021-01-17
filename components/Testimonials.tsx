@@ -1,38 +1,45 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 
-import H4 from "./H4";
+import Section from "./Section";
+import Row from "./Row";
 import P from "./P";
 
-const StyledSection = styled.section`
-  padding: 1.5rem;
-  display: grid;
-  gap: 1.5rem;
-`;
-
-const Ballon = styled.div<{ index: number }>`
-  background: ${(props) => props.theme.red};
-  color: ${(props) => props.theme.white};
-  border-radius: 1rem;
-  position: relative;
-  padding: 1.5rem;
-  &::after {
-    border-top: 1rem solid ${(props) => props.theme.red};
-    border-left: 1rem solid
-      ${(props) => (props.index % 2 === 0 ? props.theme.red : "transparent")};
-    border-right: 1rem solid
-      ${(props) => (props.index % 2 === 0 ? "transparent" : props.theme.red)};
-    right: ${(props) => (props.index % 2 === 0 ? "auto" : "4rem")};
-    left: ${(props) => (props.index % 2 === 0 ? "4rem" : "auto")};
-    border-bottom: 1rem solid transparent;
-    position: absolute;
-    bottom: -1rem;
-    content: "";
+const ResponsiveSection = styled(Section)`
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 1288px) {
+    grid-template-columns: repeat(4, 1fr);
   }
 `;
 
-const Thumbnail = styled.div`
-  background: url("http://placekitten.com/300/300");
+const Ballon = styled.div`
+  box-shadow: ${(props) => props.theme.shadow};
+  background: ${(props) => props.theme.red};
+  color: ${(props) => props.theme.white};
+  border-radius: 1rem;
+  align-items: center;
+  position: relative;
+  font-size: 1rem;
+  padding: 1.5rem;
+  display: grid;
+  &::after {
+    border-top: 1rem solid ${(props) => props.theme.red};
+    border-left: 1rem solid ${(props) => props.theme.red};
+    border-right: 1rem solid transparent;
+    border-bottom: 1rem solid transparent;
+    position: absolute;
+    bottom: -1rem;
+    right: auto;
+    content: "";
+    left: 4rem;
+  }
+`;
+
+const Thumbnail = styled.div<{ src: string }>`
+  background: ${(props) =>
+    props.src ? `url(${props.src})` : "url(http://placekitten.com/300/300)"};
   box-shadow: ${(props) => props.theme.shadow};
   background-position: center center;
   background-repeat: no-repeat;
@@ -43,49 +50,90 @@ const Thumbnail = styled.div`
   width: 4rem;
 `;
 
-const Wrapper = styled.div<{ index: number }>`
-  justify-content: ${(props) => (props.index % 2 === 0 ? "start" : "end")};
-  grid-template-areas: ${(props) =>
-    props.index % 2 === 0 ? `"thumb text"` : `"text thumb"`};
+const Wrapper = styled.div`
+  grid-template-areas: "thumb text";
   grid-template-columns: auto auto;
+  justify-content: start;
   align-items: center;
   display: grid;
   gap: 1rem;
 `;
 
-const TextWrapper = styled.div<{ index: number }>`
-  text-align: ${(props) => (props.index % 2 === 0 ? "left" : "right")};
+const TextWrapper = styled.div`
   grid-area: text;
+  > p {
+    line-height: 1.2;
+  }
+  > p:nth-child(2) {
+    font-size: 0.8em;
+  }
 `;
 
-const Testimonial = ({ index }) => {
+interface Testimonial {
+  thumb: string;
+  name: string;
+  meta: string;
+  text: string;
+}
+
+const TestimonialCard: FunctionComponent<Testimonial> = ({
+  thumb,
+  text,
+  name,
+  meta,
+}) => {
   return (
-    <StyledSection>
-      <Ballon index={index}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt culpa
-        omnis excepturi ipsum nemo quaerat nihil corrupti ad repellat! Culpa
-        repellendus id perspiciatis quis.
-      </Ballon>
-      <Wrapper index={index}>
-        <Thumbnail />
-        <TextWrapper index={index}>
-          <H4>nome da pessoa</H4>
-          <P>alguma informacao</P>
+    <Row align="end">
+      <Ballon>"{text}"</Ballon>
+      <Wrapper>
+        <Thumbnail src={thumb} />
+        <TextWrapper>
+          <P strong>{name}</P>
+          <P>{meta}</P>
         </TextWrapper>
       </Wrapper>
-    </StyledSection>
+    </Row>
   );
 };
 
 const Testimonials = () => {
-  const testimonialList = [...Array(5)];
+  const testimonialList: Testimonial[] = [
+    {
+      thumb: "/testimonial-1.jpg",
+      name: "Marcos Ribeiro",
+      meta: "Analista Financeiro",
+      text:
+        "Adorei as aulas do mestre Dilson. Ele realmente utiliza o potencial do Karatê para melhorar a vida das pessoas",
+    },
+    {
+      thumb: "/testimonial-2.jpg",
+      name: "Suzanna P. Almeida",
+      meta: "Antropóloga",
+      text:
+        "Descobri a prática do Karatê-Dô realizando os treinos com o mestre, e posso afirmar que ele leva a filosofia das Artes Marciais a sério.",
+    },
+    {
+      thumb: "/testimonial-3.jpg",
+      name: "Elder Rios",
+      meta: "Aposentado",
+      text:
+        "Achei que com mais idade seria difícil de me exercitar, porém apesar de as aulas serem dinâmicas e de grande impacto, o Mestre possui vasto conhecimento de anatomia e melhoramento do condicionamento físico",
+    },
+    {
+      thumb: "/testimonial-4.jpg",
+      name: "Raphael Schiavo",
+      meta: "Estudante",
+      text:
+        "O karatê ajudou a melhorar meu foco e consequentemente as minhas notas na escola rs",
+    },
+  ];
 
   return (
-    <>
-      {testimonialList.map((a, index) => (
-        <Testimonial index={index} />
+    <ResponsiveSection>
+      {testimonialList.map((testimonial, index) => (
+        <TestimonialCard key={`testimonial_${index}`} {...testimonial} />
       ))}
-    </>
+    </ResponsiveSection>
   );
 };
 

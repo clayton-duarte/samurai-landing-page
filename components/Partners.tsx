@@ -1,26 +1,26 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-const Wrapper = styled.div`
-  grid-template-columns: repeat(3, auto);
-  justify-content: space-between;
-  padding: 1.5rem;
-  display: grid;
-  gap: 1.5rem;
-`;
+import Section from "./Section";
+import Row from "./Row";
 
-const Image = styled.img`
-  height: 20vw;
+const Image = styled.img<{ inset?: boolean }>`
   filter: grayscale(100%) contrast(80%);
+  height: 20vw;
+  @media (min-width: 768px) {
+    height: 10vw;
+  }
 `;
 
-const Partners = () => {
+const Partners = ({ ...props }) => {
   return (
-    <Wrapper>
-      <Image src="./parceiros-2.webp" />
-      <Image src="./parceiros-3.webp" />
-      <Image src="./parceiros-1.webp" />
-    </Wrapper>
+    <Section {...props}>
+      <Row template="repeat(3, auto)" justify="space-between">
+        <Image src="./parceiros-2.webp" />
+        <Image src="./parceiros-3.webp" />
+        <Image src="./parceiros-1.webp" />
+      </Row>
+    </Section>
   );
 };
 

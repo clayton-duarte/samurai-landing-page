@@ -1,5 +1,6 @@
 import React from "react";
 import { NextPage } from "next";
+import styled from "@emotion/styled";
 
 import Testimonials from "../components/Testimonials";
 import Partners from "../components/Partners";
@@ -15,7 +16,7 @@ const Home: NextPage = () => {
     <>
       <Header />
       <Banner />
-      <Partners />
+      <Partners mobileOnly />
       <About />
       <Testimonials />
       <Pricing />
