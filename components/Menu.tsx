@@ -96,7 +96,7 @@ const Menu: FunctionComponent<{ onTop: boolean }> = ({ onTop }) => {
       <MenuIcon role="button" href="#" onClick={handleClickMenu} onTop={onTop}>
         <StyledMenuIcon open={open} onTop={onTop} />
       </MenuIcon>
-      <MenuOverlay open={open} onTop={onTop}>
+      <MenuOverlay open={open}>
         <MenuItems setOpen={setOpen} />
       </MenuOverlay>
       {open && (

@@ -74,7 +74,7 @@ const Banner: FunctionComponent = () => {
   return (
     <StyledBanner>
       <Wrapper id="home">
-        <H1>karatê Budo</H1>
+        <H1>Karatê Budo</H1>
         <SubTitle>
           O Zen em movimento <br />
           Mentalidade samurai

@@ -27,13 +27,13 @@ const MenuItems: FunctionComponent<{
   return (
     <>
       <MenuItem onClick={handleClickMenuItem("__next")} role="button" href="#">
-        inicio
+        Início
       </MenuItem>
       <MenuItem role="button" href="#" onClick={handleClickMenuItem("about")}>
         sobre
       </MenuItem>
       {/* <MenuItem role="button" href="#" onClick={handleClickMenuItem("about")}>
-        historia
+        História
       </MenuItem> */}
       <MenuItem role="button" href="#" onClick={handleClickMenuItem("aulas")}>
         aulas

@@ -8,6 +8,12 @@ import H3 from "./H3";
 import H4 from "./H4";
 import P from "./P";
 
+const StyledList = styled.ul`
+  padding: 0 0 0 1.5rem;
+  margin: 0;
+  text-align: left;
+`;
+
 const StyledSection = styled.section`
   background: ${(props) => props.theme.grey};
   color: ${(props) => props.theme.white};
@@ -25,19 +31,15 @@ const ResponsiveRow = styled(Row)`
   }
 `;
 
-const Card = styled.div`
+const Card = styled.div<{ blue?: boolean }>`
+  background: ${(props) => (props.blue ? props.theme.blue : props.theme.white)};
+  color: ${(props) => (props.blue ? props.theme.white : props.theme.black)};
   box-shadow: ${(props) => props.theme.shadow};
-  background: ${(props) => props.theme.white};
-  color: ${(props) => props.theme.black};
   border-radius: 1rem;
   text-align: center;
   padding: 2rem;
   display: grid;
   gap: 1rem;
-  &:nth-child(even) {
-    background: ${(props) => props.theme.blue};
-    color: ${(props) => props.theme.white};
-  }
 `;
 
 const PriceWrapper = styled.div`
@@ -89,10 +91,10 @@ const About = () => {
       <Section>
         <H3>Aulas&Treinos</H3>
         <H4>
-          Shihan Dílson dos Santos é faixa preta 7º Dan pela Shotokan Karate
+          Shihan Dilson dos Santos é faixa preta 7º Dan pela Shotokan Karatê
           International Federation Japão, SKIF e intrutor de Artes Marciais.
         </H4>
-        <ResponsiveRow align="start">
+        <ResponsiveRow align="stretch">
           <Card>
             <H5>Grupos</H5>
             <P>
@@ -103,7 +105,7 @@ const About = () => {
             {renderPrice(20)}
             <P>R$15 por meia hora</P>
           </Card>
-          <Card>
+          <Card blue>
             <H5>Aulas Particulares</H5>
             <P>
               Construídas com bases sólidas, fundamentadas através de vivências
@@ -113,13 +115,28 @@ const About = () => {
             {renderPrice(50)}
             <P>R$30 por meia hora</P>
           </Card>
-          <Card>
-            <H5>Finais de semana</H5>
-            <P>
-              Entre em contato pelo nosso Whatsapp para valores e mais
-              informações
-            </P>
-          </Card>
+          <Row rows="auto 1fr" align="stretch">
+            <Card>
+              <H5>Finais de semana</H5>
+              <P>
+                Entre em contato pelo nosso Whatsapp para valores e mais
+                informações
+              </P>
+            </Card>
+            <Card>
+              <H5>COVID-19</H5>
+              {/* <P>
+                Durante o periodo de pandemia estamos tomando as seguintes
+                medidas de protecao:
+              </P> */}
+              <StyledList>
+                <li>Mini-grupos com no máximo 10 alunos;</li>
+                <li>Apenas práticas sem contato físico;</li>
+                <li>Uso obrigatório de máscara indoor;</li>
+                <li>Álcool em gel disponível;</li>
+              </StyledList>
+            </Card>
+          </Row>
         </ResponsiveRow>
       </Section>
     </StyledSection>

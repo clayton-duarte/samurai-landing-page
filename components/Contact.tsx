@@ -1,10 +1,12 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import styled from "@emotion/styled";
 import axios from "axios";
+import { RiLoader3Line } from "react-icons/ri";
 import {
   FaFacebookSquare,
-  FaYoutubeSquare,
   FaWhatsappSquare,
+  FaYoutubeSquare,
+  FaCheckCircle,
 } from "react-icons/fa";
 
 import Section from "./Section";
@@ -12,18 +14,12 @@ import Button from "./Button";
 import Row from "./Row";
 import H3 from "./H3";
 import H4 from "./H4";
+import P from "./P";
 
 const SocialLinks = styled(Row)`
   font-size: 2.5rem;
   @media (min-width: 1024px) {
-    font-size: 3.5rem;
-  }
-`;
-
-const ResponsiveRow = styled(Row)`
-  padding-top: 2rem;
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr);
+    font-size: 3rem;
   }
 `;
 
@@ -43,8 +39,13 @@ const Form = styled.form`
   box-shadow: ${(props) => props.theme.shadow};
   border-radius: 1rem;
   text-align: center;
+  position: relative;
+  max-width: 768px;
+  overflow: hidden;
+  margin: 0 auto;
   padding: 2rem;
   display: grid;
+  width: 100%;
   gap: 2rem;
 `;
 
@@ -73,7 +74,40 @@ const FormTitle = styled.p`
   font-weight: bold;
 `;
 
+const Overlay = styled(Section)`
+  background: ${(props) => props.theme.white};
+  justify-items: center;
+  align-content: center;
+  position: absolute;
+  text-align: center;
+  padding: 1.5rem;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+`;
+
+const CheckIcon = styled(FaCheckCircle)`
+  color: ${(props) => props.theme.green};
+  font-size: 4rem;
+`;
+
+const LoaderIcon = styled(RiLoader3Line)`
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  font-size: 4rem;
+  animation: rotate 1s infinite linear;
+`;
+
 const Contact = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isSent, setIsSent] = useState<boolean>(false);
   const [formData, setFormData] = useState<{
     message?: string;
     email?: string;
@@ -92,6 +126,7 @@ const Contact = () => {
 
   const handleSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
+    setIsLoading(true);
     if (!formData.email) {
       alert("Por favor, preencha o campo email do formulario");
     } else if (!formData.name) {
@@ -100,6 +135,8 @@ const Contact = () => {
       alert("Por favor, preencha o campo mensagem do formulario");
     } else {
       await axios.post("/api/email", formData);
+      setIsLoading(false);
+      setIsSent(true);
       setFormData({
         message: null,
         email: null,
@@ -112,39 +149,60 @@ const Contact = () => {
     <Section id="contact">
       <H3>Contato</H3>
       <H4>Entre em contato conosco e agende a sua primeira aula!</H4>
-      <ResponsiveRow>
-        <SocialLinks template="repeat(3, auto)" justify="center">
-          <a target="_blank" href="https://cutt.ly/GjU3xgp">
-            <Whatsapp />
-          </a>
-          <a target="_blank" href="https://cutt.ly/0jzNwFh">
-            <Youtube />
-          </a>
-          <a target="_blank" href="https://cutt.ly/QjU3pEt">
-            <Facebook />
-          </a>
-        </SocialLinks>
+      <SocialLinks template="repeat(3, auto)" justify="center">
+        <a target="_blank" href="https://cutt.ly/GjU3xgp">
+          <Whatsapp />
+        </a>
+        <a target="_blank" href="https://cutt.ly/0jzNwFh">
+          <Youtube />
+        </a>
+        <a target="_blank" href="https://cutt.ly/QjU3pEt">
+          <Facebook />
+        </a>
+      </SocialLinks>
+      <Row>
         <Form onSubmit={handleSubmit}>
+          {(isSent || isLoading) && (
+            <Overlay>
+              {isLoading && (
+                <>
+                  <LoaderIcon />
+                </>
+              )}
+              {isSent && (
+                <>
+                  <CheckIcon />
+                  <H4>Obrigado pelo seu contato!</H4>
+                  <P>
+                    Uma cópia desta mensagem foi encaminhada para o endereço de
+                    email informado.
+                    <br />
+                    Entraremos em contato o mais breve possível.
+                  </P>
+                </>
+              )}
+            </Overlay>
+          )}
           <FormTitle>
-            Utilize esse formulario para nos enviar um email
+            Utilize esse formulário para nos enviar um email
           </FormTitle>
           <Input
             value={formData.name}
             onChange={handleChange}
-            placeholder="Nome (Obrigatorio)"
+            placeholder="Nome (Obrigatório)"
             name="name"
           />
           <Input
             value={formData.email}
             onChange={handleChange}
-            placeholder="Email (Obrigatorio)"
+            placeholder="Email (Obrigatório)"
             type="email"
             name="email"
           />
           <TextArea
             value={formData.message}
             onChange={handleChange}
-            placeholder="Mensagem (Obrigatorio)"
+            placeholder="Mensagem (Obrigatório)"
             name="message"
             rows={6}
           />
@@ -161,7 +219,7 @@ const Contact = () => {
             </Button>
           </Row>
         </Form>
-      </ResponsiveRow>
+      </Row>
     </Section>
   );
 };

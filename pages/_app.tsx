@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { css, Global, Theme, ThemeProvider } from "@emotion/react";
 import { AppProps } from "next/app";
+import Head from "next/head";
 
 const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
   const theme: Theme = {
@@ -15,6 +16,9 @@ const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
 
   return (
     <ThemeProvider theme={theme}>
+      <Head>
+        <title>Dilson Samurai - Karatê Budo</title>
+      </Head>
       <Component {...pageProps} />
       <Global
         styles={css`
