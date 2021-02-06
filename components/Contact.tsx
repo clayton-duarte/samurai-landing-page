@@ -1,39 +1,55 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
-import styled from "@emotion/styled";
-import axios from "axios";
-import { RiLoader3Line } from "react-icons/ri";
+import React, { ChangeEvent, FormEvent, useState } from 'react'
+import styled from '@emotion/styled'
+import axios from 'axios'
+import { RiLoader3Line } from 'react-icons/ri'
 import {
-  FaFacebookSquare,
-  FaWhatsappSquare,
-  FaYoutubeSquare,
+  FaInstagram,
+  FaFacebookF,
+  FaYoutube,
   FaCheckCircle,
-} from "react-icons/fa";
+} from 'react-icons/fa'
 
-import Section from "./Section";
-import Button from "./Button";
-import Row from "./Row";
-import H3 from "./H3";
-import H4 from "./H4";
-import P from "./P";
+import Section from './Section'
+import Button from './Button'
+import Row from './Row'
+import H3 from './H3'
+import H4 from './H4'
+import P from './P'
 
 const SocialLinks = styled(Row)`
-  font-size: 2.5rem;
+  font-size: 2rem;
   @media (min-width: 1024px) {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
-`;
+`
 
-const Whatsapp = styled(FaWhatsappSquare)`
-  color: ${(props) => props.theme.green};
-`;
+const Instagram = styled(FaInstagram)`
+  background: #d6249f;
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285aeb 90%
+  );
+  color: ${(props) => props.theme.white};
+  border-radius: 5px;
+`
 
-const Youtube = styled(FaYoutubeSquare)`
-  color: ${(props) => props.theme.red};
-`;
+const Youtube = styled(FaYoutube)`
+  color: ${(props) => props.theme.white};
+  background: #ff0000;
+  border-radius: 5px;
+  padding: 2px;
+`
 
-const Facebook = styled(FaFacebookSquare)`
-  color: ${(props) => props.theme.blue};
-`;
+const Facebook = styled(FaFacebookF)`
+  color: ${(props) => props.theme.white};
+  background: #4267b2;
+  border-radius: 5px;
+  padding: 3px;
+`
 
 const Form = styled.form`
   box-shadow: ${(props) => props.theme.shadow};
@@ -47,7 +63,7 @@ const Form = styled.form`
   display: grid;
   width: 100%;
   gap: 2rem;
-`;
+`
 
 const Input = styled.input`
   background: #d8d8d8;
@@ -57,7 +73,7 @@ const Input = styled.input`
   &:focus {
     outline: none;
   }
-`;
+`
 
 const TextArea = styled.textarea`
   background: #d8d8d8;
@@ -67,12 +83,12 @@ const TextArea = styled.textarea`
   &:focus {
     outline: none;
   }
-`;
+`
 
 const FormTitle = styled.p`
   font-size: 1.25rem;
   font-weight: bold;
-`;
+`
 
 const Overlay = styled(Section)`
   background: ${(props) => props.theme.white};
@@ -85,12 +101,12 @@ const Overlay = styled(Section)`
   right: 0;
   left: 0;
   top: 0;
-`;
+`
 
 const CheckIcon = styled(FaCheckCircle)`
   color: ${(props) => props.theme.green};
   font-size: 4rem;
-`;
+`
 
 const LoaderIcon = styled(RiLoader3Line)`
   @keyframes rotate {
@@ -103,55 +119,55 @@ const LoaderIcon = styled(RiLoader3Line)`
   }
   font-size: 4rem;
   animation: rotate 1s infinite linear;
-`;
+`
 
 const Contact = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isSent, setIsSent] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isSent, setIsSent] = useState<boolean>(false)
   const [formData, setFormData] = useState<{
-    message?: string;
-    email?: string;
-    name?: string;
+    message?: string
+    email?: string
+    name?: string
   }>({
     message: null,
     email: null,
     name: null,
-  });
+  })
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ): void => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
 
   const handleSubmit = async (e: FormEvent): Promise<void> => {
-    e.preventDefault();
-    setIsLoading(true);
+    e.preventDefault()
+    setIsLoading(true)
     if (!formData.email) {
-      alert("Por favor, preencha o campo email do formulario");
+      alert('Por favor, preencha o campo email do formulario')
     } else if (!formData.name) {
-      alert("Por favor, preencha o campo nome do formulario");
+      alert('Por favor, preencha o campo nome do formulario')
     } else if (!formData.message) {
-      alert("Por favor, preencha o campo mensagem do formulario");
+      alert('Por favor, preencha o campo mensagem do formulario')
     } else {
-      await axios.post("/api/email", formData);
-      setIsLoading(false);
-      setIsSent(true);
+      await axios.post('/api/email', formData)
+      setIsLoading(false)
+      setIsSent(true)
       setFormData({
         message: null,
         email: null,
         name: null,
-      });
+      })
     }
-  };
+  }
 
   return (
     <Section id="contact">
       <H3>Contato</H3>
       <H4>Entre em contato conosco e agende a sua primeira aula!</H4>
       <SocialLinks template="repeat(3, auto)" justify="center">
-        <a target="_blank" href="https://cutt.ly/GjU3xgp">
-          <Whatsapp />
+        <a target="_blank" href="https://cutt.ly/GjU3WXQ">
+          <Instagram />
         </a>
         <a target="_blank" href="https://cutt.ly/0jzNwFh">
           <Youtube />
@@ -221,7 +237,7 @@ const Contact = () => {
         </Form>
       </Row>
     </Section>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact

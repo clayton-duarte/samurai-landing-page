@@ -1,9 +1,9 @@
-import React, { FunctionComponent } from "react";
-import styled from "@emotion/styled";
+import React, { FunctionComponent } from 'react'
+import styled from '@emotion/styled'
 
-import Section from "./Section";
-import Row from "./Row";
-import P from "./P";
+import Section from './Section'
+import Row from './Row'
+import P from './P'
 
 const ResponsiveSection = styled(Section)`
   @media (min-width: 768px) {
@@ -12,11 +12,11 @@ const ResponsiveSection = styled(Section)`
   @media (min-width: 1288px) {
     grid-template-columns: repeat(4, 1fr);
   }
-`;
+`
 
 const Ballon = styled.div`
   box-shadow: ${(props) => props.theme.shadow};
-  background: ${(props) => props.theme.red};
+  background: ${(props) => props.theme.blue};
   color: ${(props) => props.theme.white};
   border-radius: 1rem;
   align-items: center;
@@ -25,21 +25,21 @@ const Ballon = styled.div`
   padding: 1.5rem;
   display: grid;
   &::after {
-    border-top: 1rem solid ${(props) => props.theme.red};
-    border-left: 1rem solid ${(props) => props.theme.red};
+    border-left: 1rem solid ${(props) => props.theme.blue};
+    border-top: 1rem solid ${(props) => props.theme.blue};
     border-right: 1rem solid transparent;
     border-bottom: 1rem solid transparent;
     position: absolute;
     bottom: -1rem;
     right: auto;
-    content: "";
+    content: '';
     left: 4rem;
   }
-`;
+`
 
 const Thumbnail = styled.div<{ src: string }>`
   background: ${(props) =>
-    props.src ? `url(${props.src})` : "url(http://placekitten.com/300/300)"};
+    props.src ? `url(${props.src})` : 'url(http://placekitten.com/300/300)'};
   box-shadow: ${(props) => props.theme.shadow};
   background-position: center center;
   background-repeat: no-repeat;
@@ -48,16 +48,16 @@ const Thumbnail = styled.div<{ src: string }>`
   grid-area: thumb;
   height: 4rem;
   width: 4rem;
-`;
+`
 
 const Wrapper = styled.div`
-  grid-template-areas: "thumb text";
+  grid-template-areas: 'thumb text';
   grid-template-columns: auto auto;
   justify-content: start;
   align-items: center;
   display: grid;
   gap: 1rem;
-`;
+`
 
 const TextWrapper = styled.div`
   grid-area: text;
@@ -67,13 +67,13 @@ const TextWrapper = styled.div`
   > p:nth-child(2) {
     font-size: 0.8em;
   }
-`;
+`
 
 interface Testimonial {
-  thumb: string;
-  name: string;
-  meta: string;
-  text: string;
+  thumb: string
+  name: string
+  meta: string
+  text: string
 }
 
 const TestimonialCard: FunctionComponent<Testimonial> = ({
@@ -93,40 +93,40 @@ const TestimonialCard: FunctionComponent<Testimonial> = ({
         </TextWrapper>
       </Wrapper>
     </Row>
-  );
-};
+  )
+}
 
 const Testimonials = () => {
   const testimonialList: Testimonial[] = [
     {
-      thumb: "/testimonial-1.jpg",
-      name: "Marcos Ribeiro",
-      meta: "Analista Financeiro",
+      thumb: '/testimonial-1.jpg',
+      name: 'Marcos Ribeiro',
+      meta: 'Analista Financeiro',
       text:
-        "Adorei as aulas do mestre Dilson. Ele realmente utiliza o potencial do Karatê para melhorar a vida das pessoas",
+        'Adorei as aulas do mestre Dilson. Ele realmente utiliza o potencial do Karatê para melhorar a vida das pessoas',
     },
     {
-      thumb: "/testimonial-2.jpg",
-      name: "Suzanna P. Almeida",
-      meta: "Antropóloga",
+      thumb: '/testimonial-2.jpg',
+      name: 'Suzanna P. Almeida',
+      meta: 'Antropóloga',
       text:
-        "Descobri a prática do Karatê-Dô realizando os treinos com o mestre, e posso afirmar que ele leva a filosofia das Artes Marciais a sério.",
+        'Descobri a prática do Karatê-Dô realizando os treinos com o mestre, e posso afirmar que ele leva a filosofia das Artes Marciais a sério.',
     },
     {
-      thumb: "/testimonial-3.jpg",
-      name: "Elder Rios",
-      meta: "Aposentado",
+      thumb: '/testimonial-3.jpg',
+      name: 'Frederico Valadim',
+      meta: 'Aposentado',
       text:
-        "Achei que com mais idade seria difícil de me exercitar, porém apesar de as aulas serem dinâmicas e de grande impacto, o Mestre possui vasto conhecimento de anatomia e melhoramento do condicionamento físico",
+        'Achei que com mais idade seria difícil de me exercitar, porém apesar de as aulas serem dinâmicas e de grande impacto, o Mestre possui vasto conhecimento de anatomia e melhoramento do condicionamento físico',
     },
     {
-      thumb: "/testimonial-4.jpg",
-      name: "Raphael Schiavo",
-      meta: "Estudante",
+      thumb: '/testimonial-4.jpg',
+      name: 'Fábio Portugal',
+      meta: 'Estudante',
       text:
-        "O karatê ajudou a melhorar meu foco e consequentemente as minhas notas na escola rs",
+        'O karatê ajudou a melhorar meu foco e consequentemente as minhas notas na escola rs',
     },
-  ];
+  ]
 
   return (
     <ResponsiveSection>
@@ -134,7 +134,7 @@ const Testimonials = () => {
         <TestimonialCard key={`testimonial_${index}`} {...testimonial} />
       ))}
     </ResponsiveSection>
-  );
-};
+  )
+}
 
-export default Testimonials;
+export default Testimonials

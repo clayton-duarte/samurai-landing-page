@@ -1,15 +1,15 @@
-import React from "react";
-import styled from "@emotion/styled";
+import React from 'react'
+import styled from '@emotion/styled'
 
-import Partners from "./Partners";
-import Section from "./Section";
-import Row from "./Row";
-import H3 from "./H3";
-import P from "./P";
+import Partners from './Partners'
+import Section from './Section'
+import Row from './Row'
+import H3 from './H3'
+import P from './P'
 
 const Picture = styled.div`
   box-shadow: ${(props) => props.theme.shadow};
-  background: url("./sobre-mim.webp");
+  background: url('./sobre-mim.webp');
   background-position: right center;
   border-radius: calc(50vw - 2rem);
   background-repeat: no-repeat;
@@ -22,7 +22,7 @@ const Picture = styled.div`
     height: calc(400px - 4rem);
     width: calc(400px - 4rem);
   }
-`;
+`
 
 const Blockquote = styled.blockquote`
   border-left: 0.25rem solid ${(props) => props.theme.grey};
@@ -30,7 +30,7 @@ const Blockquote = styled.blockquote`
   font-weight: bold;
   padding: 0 1rem;
   margin: 1rem;
-`;
+`
 
 const ResponsiveRow = styled(Row)`
   @media (min-width: 768px) {
@@ -40,7 +40,7 @@ const ResponsiveRow = styled(Row)`
   @media (min-width: 1024px) {
     gap: 5rem;
   }
-`;
+`
 
 const About = () => {
   return (
@@ -53,20 +53,25 @@ const About = () => {
         </Row>
         <Row>
           <P>
-            Dilson dos Santos, nascido no Rio de Janeiro, é mestre sétimo dan em
-            Karatê Budo e instrutor de Defesa Pessoal. Começou a treinar bem
-            cedo aos 9 anos com os grandes mestres Furusho, Watanabe, Uriu,
-            Tanaka, Délio e Paulo Goes (Shotokan). E desde então, compartilha a
-            filosofia do Karatê Budo.
+            Shihan Dilson dos Santos, nascido no Rio de Janeiro, é faixa preta
+            6º Dan pela Shotokan Karatê International Federation (SKIF) Japão,
+            7º em Shotokan-ryu, Ex membro do Kodansha Kai, presidente da
+            Federação de Karatê Semicontato do Estado do Rio de Janeiro e
+            intrutor de Artes Marciais.
           </P>
+          <P>
+            Ele começou a treinar bem cedo aos 9 anos com os grandes mestres
+            Furusho, Watanabe, Uriu, Tanaka, Délio e Paulo Goes (Shotokan). E
+            desde então, compartilha a filosofia do Karatê Budo.
+          </P>
+          <Blockquote>
+            "O Karatê que descarta o Budo não tem substância."
+          </Blockquote>
           <P>
             Budo é um termo japonês que significa "caminho marcial" e se refere
             às disciplinas marciais que tem como principal objetivo o espírito,
             a ética e/ou o desenvolvimento pessoal.
           </P>
-          <Blockquote>
-            "O Karatê que descarta o Budo não tem substância."
-          </Blockquote>
           <P>
             Como mestre que pratica o Budo desde os 9 anos, ele enfatiza que
             esse é o melhor dos dois mundos. Pois, pratica e dá aulas baseadas
@@ -85,7 +90,7 @@ const About = () => {
         </Row>
       </ResponsiveRow>
     </Section>
-  );
-};
+  )
+}
 
-export default About;
+export default About

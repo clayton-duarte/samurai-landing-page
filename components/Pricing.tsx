@@ -1,18 +1,17 @@
-import React from "react";
-import styled from "@emotion/styled";
+import React from 'react'
+import styled from '@emotion/styled'
 
-import Section from "./Section";
-import Row from "./Row";
-import H5 from "./H5";
-import H3 from "./H3";
-import H4 from "./H4";
-import P from "./P";
+import Section from './Section'
+import Row from './Row'
+import H5 from './H5'
+import H3 from './H3'
+import P from './P'
 
 const StyledList = styled.ul`
   padding: 0 0 0 1.5rem;
   margin: 0;
   text-align: left;
-`;
+`
 
 const StyledSection = styled.section`
   background: ${(props) => props.theme.grey};
@@ -20,7 +19,7 @@ const StyledSection = styled.section`
   padding-bottom: 3rem;
   display: grid;
   gap: 2rem;
-`;
+`
 
 const ResponsiveRow = styled(Row)`
   @media (min-width: 768px) {
@@ -29,7 +28,7 @@ const ResponsiveRow = styled(Row)`
   @media (min-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
   }
-`;
+`
 
 const Card = styled.div<{ blue?: boolean }>`
   background: ${(props) => (props.blue ? props.theme.blue : props.theme.white)};
@@ -40,40 +39,40 @@ const Card = styled.div<{ blue?: boolean }>`
   padding: 2rem;
   display: grid;
   gap: 1rem;
-`;
+`
 
 const PriceWrapper = styled.div`
-  grid-template-areas: "value currency" "value unit";
+  grid-template-areas: 'value currency' 'value unit';
   justify-content: center;
   display: grid;
   gap: 0.75rem;
-`;
+`
 
 const PriceValue = styled.div`
-  font-family: "Roboto Mono", monospace;
+  font-family: 'Roboto Mono', monospace;
   align-self: center;
   font-weight: bold;
   grid-area: value;
   font-size: 4.5rem;
   display: grid;
-`;
+`
 
 const Currency = styled.div`
-  font-family: "Roboto Mono", monospace;
+  font-family: 'Roboto Mono', monospace;
   grid-area: currency;
   font-weight: bold;
   font-size: 1.5rem;
   text-align: left;
   align-self: end;
   display: grid;
-`;
+`
 
 const Unit = styled.div`
   align-self: start;
   text-align: left;
   grid-area: unit;
   display: grid;
-`;
+`
 
 const About = () => {
   const renderPrice = (price: number): JSX.Element => {
@@ -83,17 +82,13 @@ const About = () => {
         <Currency>R$</Currency>
         <Unit>Por Hora</Unit>
       </PriceWrapper>
-    );
-  };
+    )
+  }
 
   return (
     <StyledSection id="aulas">
       <Section>
-        <H3>Aulas&Treinos</H3>
-        <H4>
-          Shihan Dilson dos Santos é faixa preta 7º Dan pela Shotokan Karatê
-          International Federation Japão, SKIF e intrutor de Artes Marciais.
-        </H4>
+        <H3>Aulas e Treinos</H3>
         <ResponsiveRow align="stretch">
           <Card>
             <H5>Grupos</H5>
@@ -140,7 +135,7 @@ const About = () => {
         </ResponsiveRow>
       </Section>
     </StyledSection>
-  );
-};
+  )
+}
 
-export default About;
+export default About

@@ -1,24 +1,24 @@
-import React, { FunctionComponent } from "react";
-import styled from "@emotion/styled";
+import React, { FunctionComponent } from 'react'
+import styled from '@emotion/styled'
 import {
   FaInstagramSquare,
   FaFacebookSquare,
   FaYoutubeSquare,
   FaLinkedin,
   FaWhatsapp,
-} from "react-icons/fa";
+} from 'react-icons/fa'
 
 const Copyright = styled.span`
   letter-spacing: 2px;
   font-size: 0.75em;
-`;
+`
 
 const Fab = styled.a`
   margin: 1rem;
   box-shadow: ${(props) => props.theme.shadow};
-  background: ${(props) => props.theme.green};
   color: ${(props) => props.theme.white};
   justify-content: center;
+  background: #25d366;
   border-radius: 3rem;
   align-items: center;
   margin-left: auto;
@@ -28,7 +28,7 @@ const Fab = styled.a`
   bottom: 1rem;
   height: 3rem;
   width: 3rem;
-`;
+`
 
 const StyledFooter = styled.footer`
   box-shadow: ${(props) => props.theme.shadow};
@@ -51,7 +51,7 @@ const StyledFooter = styled.footer`
   > a {
     color: ${(props) => props.theme.white};
   }
-`;
+`
 
 const Footer: FunctionComponent = () => {
   return (
@@ -59,7 +59,7 @@ const Footer: FunctionComponent = () => {
       <Fab
         target="_blank"
         href={`https://wa.me/5521999003412?text=${encodeURI(
-          "Olá mestre Dilson, gostaria de saber mais informações sobre as suas aulas."
+          'Olá mestre Dilson, gostaria de saber mais informações sobre as suas aulas.'
         )}`}
       >
         <FaWhatsapp fontSize="2rem" />
@@ -80,7 +80,7 @@ const Footer: FunctionComponent = () => {
         </a>
       </StyledFooter>
     </>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
